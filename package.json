@@ -1,21 +1,24 @@
 {
-  
+  "homepage": "https://subham13-02.github.io/Chat-Application",
   "name": "chatroom",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "./node_modules/.bin/netlify-lambda serve src",
+    "build": "./node_modules/.bin/netlify-lambda build src"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
+    "serverless-http": "^3.2.0",
     "socket.io": "^4.7.1"
   },
   "devDependencies": {
+    "netlify-lambda": "^2.0.16",
     "nodemon": "^3.0.1"
   }
 }

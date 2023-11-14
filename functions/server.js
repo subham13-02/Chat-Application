@@ -1,8 +1,10 @@
 //import express
 const express=require('express');
 
-//make an epress app
+//creating express app
 const app=express();
+const router=express.router();
+const serverless=require('serverless-http');
 
 //makkig server using http and express
 const server =require('http').Server(app);
@@ -25,8 +27,13 @@ io.on('connection',(socket)=>{
         io.emit(socket.id,'->left the chat');        
     });
 });
-const PORT = 7000;
+// const PORT = 7000;
 
-server.listen(PORT,()=>{
-    console.log(`Server is running on PORT ${PORT}`); //
-});
+// server.listen(PORT,()=>{
+//     console.log(`Server is running on PORT ${PORT}`);
+// });
+
+
+app.use('/.netlify/functions/server',router);
+
+module.exports.handler=serverless(app);
